@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 int *returnArray(int *n)
 {
     printf("Enter number of elements in the array: ");
@@ -17,7 +16,6 @@ int *returnArray(int *n)
     }
     return arr1;
 }
-
 int main()
 {
     int n;
