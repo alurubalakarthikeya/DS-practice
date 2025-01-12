@@ -3,17 +3,14 @@
 #define MAX 100
 int stack[MAX];
 int top = -1;
-
 int isEmpty()
 {
     return top == -1;
 }
-
 int isFull()
 {
     return top == MAX - 1;
 }
-
 void push(int value)
 {
     if (isFull())
@@ -28,7 +25,6 @@ void push(int value)
         printf("%d is pushed to index %d in stack\n", value, top);
     }
 }
-
 int pop()
 {
     if (isEmpty())
@@ -43,7 +39,6 @@ int pop()
         return value;
     }
 }
-
 int peek()
 {
     if (isEmpty())
@@ -56,7 +51,6 @@ int peek()
         return stack[top];
     }
 }
-
 int main()
 {
     push(10);

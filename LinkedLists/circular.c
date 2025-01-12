@@ -3,40 +3,40 @@
 struct node
 {
     int data;
-    struct node *next;
+    struct ndoe *next;
 };
 struct node *head = NULL;
-void circular_insertion()
+int circularInsert()
 {
-    struct node *newNode = (struct node *)malloc(sizeof(struct node));
-    printf("Enter the data for the new node: ");
-    scanf("%d", &newNode->data);
+    struct node *new = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the data: ");
+    scanf("%d", &new->data);
     if (head == NULL)
     {
-        head = newNode;
-        newNode->next = head;
+        head = new;
+        new->next = head;
     }
     else
     {
         struct node *temp = head;
-        while (temp->next != head)
+        while (temp != NULL)
         {
             temp = temp->next;
         }
-        temp->next = newNode;
-        newNode->next = head;
+        temp->next = new;
+        new->next = head;
     }
-    printf("Node inserted successfully.\n");
+    printf("Node inserted\n");
 }
-void circular_deletion()
+int circularDelete()
 {
     if (head == NULL)
     {
-        printf("List is empty.\n");
+        printf("List is empty");
         return;
     }
     int key;
-    printf("Enter the data for the node to be deleted: ");
+    printf("Enter the element to delete: ");
     scanf("%d", &key);
     struct node *temp = head, *prev = NULL;
     if (temp->data == key)
@@ -56,60 +56,60 @@ void circular_deletion()
             free(head);
             head = temp->next;
         }
-        printf("Node deleted successfully.\n");
+        printf("Node deleted\n");
         return;
     }
     do
     {
         prev = temp;
         temp = temp->next;
-    } while (temp != head && temp->data != key);
-    if (temp == head)
+    } while (temp->next != head && temp->data != key);
+    if (temp->next == head)
     {
-        printf("Node not found.\n");
+        printf("Node not found\n");
         return;
     }
     prev->next = temp->next;
     free(temp);
-    printf("Node deleted successfully.\n");
+    printf("Node deleted\n");
 }
-void circular_display()
+void circularDisplay()
 {
     if (head == NULL)
     {
-        printf("List is empty.\n");
+        printf("List is empty\n");
         return;
     }
     struct node *temp = head;
     do
     {
-        printf("%d ", temp->data);
+        printf("%d\t", temp->data);
         temp = temp->next;
     } while (temp != head);
-    printf("\n");
 }
 int main()
 {
     int choice;
     while (1)
     {
-        printf("\n1. Insertion\n2. Deletion\n3. Display\n4. Exit\nEnter your choice: ");
+        printf("1. Insert\n2. Delete\n3. Display\n4. Exit\n");
+        printf("Enter your choice: ");
         scanf("%d", &choice);
         switch (choice)
         {
         case 1:
-            circular_insertion();
+            circularInsert();
             break;
         case 2:
-            circular_deletion();
+            circularDelete();
             break;
         case 3:
-            circular_display();
+            circularDisplay();
             break;
         case 4:
             exit(0);
         default:
-            printf("Invalid choice.\n");
+            printf("Invalid choice\n");
         }
     }
     return 0;
