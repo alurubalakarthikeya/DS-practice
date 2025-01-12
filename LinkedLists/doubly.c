@@ -7,7 +7,7 @@ struct node
     struct node *next;
 };
 struct node *head = NULL;
-void doubly_insertion(int value)
+void doublyInsert(int value)
 {
     struct node *newNode = (struct node *)malloc(sizeof(struct node));
     newNode->data = value;
@@ -20,7 +20,7 @@ void doubly_insertion(int value)
     head = newNode;
     printf("Node inserted\n");
 }
-void doubly_deletion(int key)
+void doublyDelete(int key)
 {
     if (head == NULL)
     {
@@ -52,7 +52,7 @@ void doubly_deletion(int key)
     free(temp);
     printf("Node deleted\n");
 }
-void doubly_display()
+void doublyDisplay()
 {
     if (head == NULL)
     {
@@ -79,15 +79,15 @@ int main()
         case 1:
             printf("Enter value to insert: ");
             scanf("%d", &value);
-            doubly_insertion(value);
+            doublyInsert(value);
             break;
         case 2:
             printf("Enter value to delete: ");
             scanf("%d", &value);
-            doubly_deletion(value);
+            doublyDelete(value);
             break;
         case 3:
-            doubly_display();
+            doublyDisplay();
             break;
         case 4:
             exit(0);
