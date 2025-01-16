@@ -1,12 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 struct node
 {
     int data;
-    struct ndoe *next;
+    struct node *next;
 };
+
 struct node *head = NULL;
-int circularInsert()
+
+void circularInsert()
 {
     struct node *new = (struct node *)malloc(sizeof(struct node));
     printf("Enter the data: ");
@@ -19,7 +22,7 @@ int circularInsert()
     else
     {
         struct node *temp = head;
-        while (temp != NULL)
+        while (temp->next != head)
         {
             temp = temp->next;
         }
@@ -28,11 +31,12 @@ int circularInsert()
     }
     printf("Node inserted\n");
 }
-int circularDelete()
+
+void circularDelete()
 {
     if (head == NULL)
     {
-        printf("List is empty");
+        printf("List is empty\n");
         return;
     }
     int key;
@@ -63,8 +67,8 @@ int circularDelete()
     {
         prev = temp;
         temp = temp->next;
-    } while (temp->next != head && temp->data != key);
-    if (temp->next == head)
+    } while (temp != head && temp->data != key);
+    if (temp == head)
     {
         printf("Node not found\n");
         return;
@@ -73,6 +77,7 @@ int circularDelete()
     free(temp);
     printf("Node deleted\n");
 }
+
 void circularDisplay()
 {
     if (head == NULL)
@@ -86,7 +91,9 @@ void circularDisplay()
         printf("%d\t", temp->data);
         temp = temp->next;
     } while (temp != head);
+    printf("\n");
 }
+
 int main()
 {
     int choice;
