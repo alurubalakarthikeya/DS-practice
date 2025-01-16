@@ -9,6 +9,22 @@ struct node
 
 struct node *head = NULL;
 
+void insertAtBeginning()
+{
+    int value;
+    printf("Enter the value to insert: ");
+    scanf("%d", &value);
+    struct node *newNode = (struct node *)malloc(sizeof(struct node));
+    if (newNode == NULL)
+    {
+        printf("Memory allocation failed\n");
+        return;
+    }
+    newNode->data = value;
+    newNode->next = head;
+    head = newNode;
+    printf("Node inserted\n");
+}
 int singlyInsert()
 {
     struct node *new = (struct node *)malloc(sizeof(struct node));
